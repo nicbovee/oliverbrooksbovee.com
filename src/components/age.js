@@ -3,12 +3,12 @@ import styled from "styled-components";
 import {fonts, colors} from "../utils/styles";
 
 const BIRTHDAY =  new Date(2020, 3, 10, 9, 9, 0 , 0);
-const MS_IN_YEAR = 31536000000;
-const MS_IN_MONTH = MS_IN_DAY * 30;
-const MS_IN_WEEK = (MS_IN_HR * 24) * 7;
-const MS_IN_DAY = MS_IN_HR * 24;
-const MS_IN_HR = MS_IN_MIN * 60;
 const MS_IN_MIN = 60000;
+const MS_IN_HR = MS_IN_MIN * 60;
+const MS_IN_DAY = MS_IN_HR * 24;
+const MS_IN_WEEK = MS_IN_DAY * 7;
+const MS_IN_MONTH = MS_IN_DAY * 30;
+const MS_IN_YEAR = 31536000000;
 const MS_IN_HEARTBEAT = 500;
 const MS_IN_BREATH = 1333;
 
