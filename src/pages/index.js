@@ -4,54 +4,161 @@ import Stats from "../components/Stats"
 import Layout from "../components/layout"
 import Image from "../components/image"
 import SEO from "../components/seo"
-import { graphql, StaticQuery } from 'gatsby'
+import { graphql, StaticQuery, useStaticQuery } from 'gatsby'
 import styled from 'styled-components'
 import Age from '../components/age'
 import BackgroundImage from 'gatsby-background-image'
 import {fonts, colors} from '../utils/styles'
 import Day from "../components/day"
+import Img from "gatsby-image"
 
-const BackgroundSection = ({ className }) => (
-  <StaticQuery
-    query={graphql`
-      query {
-        desktop: file(relativePath: { eq: "main-oliver-background.JPG" }) {
-          childImageSharp {
-            fluid(quality: 90, maxWidth: 1920) {
-              ...GatsbyImageSharpFluid_withWebp
-            }
-          }
+
+// const BackgroundSection = ({ className }) => (
+//   <StaticQuery
+//     query={graphql`
+//       query {
+//         desktop: file(relativePath: { eq: "main-oliver-background.JPG" }) {
+//           childImageSharp {
+//             fluid(quality: 90, maxWidth: 1920) {
+//               ...GatsbyImageSharpFluid_withWebp
+//             }
+//           }
+//         }
+//       }
+//     `}
+//     render={data => {
+//       // Set ImageData.
+//       const imageData = data.desktop.childImageSharp.fluid
+//       return (
+//         <BackgroundImage
+//           Tag="section"
+//           className={className}
+//           fluid={imageData}
+//           backgroundColor={`#040e18`}
+//         >
+//           <h2>Oliver Brooks Bovee</h2>
+//         </BackgroundImage>
+//       )
+//     }}
+//   />
+// )
+
+// const StyledBackgroundSection = styled(BackgroundSection)`
+//   width: 100%;
+//   height: 100vh;
+//   background-position: bottom center;
+//   background-repeat: repeat-y;
+//   background-size: cover;
+// `
+
+
+
+const IndexPage = () => {
+  const data = useStaticQuery(graphql`
+  query {
+    day3: file(relativePath: { eq: "Day-3.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 1200) {
+          ...GatsbyImageSharpFluid
         }
       }
-    `}
-    render={data => {
-      // Set ImageData.
-      const imageData = data.desktop.childImageSharp.fluid
-      return (
-        <BackgroundImage
-          Tag="section"
-          className={className}
-          fluid={imageData}
-          backgroundColor={`#040e18`}
-        >
-          <h2>Oliver Brooks Bovee</h2>
-        </BackgroundImage>
-      )
-    }}
-  />
-)
-
-const StyledBackgroundSection = styled(BackgroundSection)`
-  width: 100%;
-  height: 100vh;
-  background-position: bottom center;
-  background-repeat: repeat-y;
-  background-size: cover;
-`
-
-
-
-const IndexPage = () => (
+    }
+    day4: file(relativePath: { eq: "day-4.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 1200) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    day5: file(relativePath: { eq: "day-5.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 1200) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    day5b: file(relativePath: { eq: "day-5-2.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 1200) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    day5c: file(relativePath: { eq: "day-5-3.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 1200) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    day5d: file(relativePath: { eq: "day-5-4.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 1200) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    day5e: file(relativePath: { eq: "day-5-5.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 1200) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    day5f: file(relativePath: { eq: "day-5-6.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 1200) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    day6: file(relativePath: { eq: "day-6.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 1200) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    day7: file(relativePath: { eq: "day-7.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 1200) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    day7a: file(relativePath: { eq: "day-7-a.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 1200) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    day7b: file(relativePath: { eq: "day-7-b.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 1200) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    day7c: file(relativePath: { eq: "day-7-c.JPG" }) {
+      childImageSharp {
+        fluid(maxWidth: 1200) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    day8: file(relativePath: { eq: "day-8.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 1200) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    
+  
+  }
+`)
+  return(
   <Layout>
     <SEO title="Home" />
     <Logo>
@@ -87,14 +194,84 @@ const IndexPage = () => (
     <Day number={3}>
       First little laugh. First day out of the hospital. First car ride. First day back at home. First time trying breast milk. It's adorable to watch him wrap his arms around mommy's boob. Really fussy.
     </Day>
+    <Img fluid={data.day3.childImageSharp.fluid} />
+    <Img fluid={data.day4.childImageSharp.fluid} />
     <Day number={4}>
       First time at the pediatrics office. Dani was really concerned because he was so under weight. The doctor said we had to supplement formula to help him get his weight back up. He was sleeping better after one bottle of formula.
     </Day>
+    <Row>
+      <Col>
+      </Col>
+      <Col>
+      </Col>
+      <Col>
+      </Col>
+    </Row>
+    <Row>
+      <Col>
+      </Col>
+      <Col>
+      </Col>
+      <Col>
+      </Col>
+    </Row>
+    <Row>
+      <div style={{width: '100%'}}>
+        <Img fluid={data.day5.childImageSharp.fluid} />
+      </div>
+      <div style={{width: '100%'}}>
+        <Img fluid={data.day5b.childImageSharp.fluid} />
+      </div>
+      <div style={{width: '100%'}}>
+        <Img fluid={data.day5c.childImageSharp.fluid} />
+      </div>
+
+    </Row>
+    <Row>
+      <div style={{width: '100%'}}>
+          <Img fluid={data.day5d.childImageSharp.fluid} />
+      </div>
+      <div style={{width: '100%'}}>
+          <Img fluid={data.day5e.childImageSharp.fluid} />
+      </div>
+      <div style={{width: '100%'}}>
+          <Img fluid={data.day5f.childImageSharp.fluid} />
+      </div>
+
+    </Row>
+
     <Day number={5}>
       First smile. Gained half a pound over night. Had to get blood drawn to test for conjegated bilirubin. 😢 First bath!
     </Day>
+
+    <Img fluid={data.day6.childImageSharp.fluid} />
+    <Day number={6}>
+      Oliver had an ultrasound to make sure everything was okay with his liver. Thankfully it was! We were super relived. We tried to do new born photos at home. Oliver had his second bath in our kitchen sink.
+    </Day>
+    <div>
+      <div style={{width: '100%'}}>
+        <Img fluid={data.day7.childImageSharp.fluid} />
+      </div>
+      <div style={{width: '100%'}}>
+        <Img fluid={data.day7a.childImageSharp.fluid} />
+      </div>
+      <div style={{width: '100%'}}>
+        <Img fluid={data.day7b.childImageSharp.fluid} />
+      </div>
+    </div>
+      <Img fluid={data.day7c.childImageSharp.fluid} />
+
+    <Day number={7}>
+      First stroller ride. First time meeting all of the burly babes.
+    </Day>
+
+    <Img fluid={data.day8.childImageSharp.fluid} />
+    <Day number={8}>
+      Oliver met Nana and Papa Larry for the first time. Cooked burgers with daddy.
+    </Day>
   </Layout>
 )
+  }
 const dark = "black";
 
 const Logo = styled.h1`
