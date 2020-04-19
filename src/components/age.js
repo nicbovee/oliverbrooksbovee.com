@@ -15,6 +15,8 @@ const MS_IN_BREATH = 1333;
 const getCurrentAge = () => Date.now() - BIRTHDAY.getTime()
 const getCurrentAgeMinutes = () => Math.floor(getCurrentAge() / MS_IN_MIN)
 const calculateAge = () => {
+    const ageObj = {}
+
     let current = getCurrentAge();
     let years = Math.floor(current/MS_IN_YEAR);
     let weeks = Math.floor(current/MS_IN_WEEK);
@@ -22,19 +24,21 @@ const calculateAge = () => {
     let hours = Math.floor((current%MS_IN_DAY)/MS_IN_HR);
     let minutes = Math.floor((current%MS_IN_HR) / MS_IN_MIN);
 
-    let stringYears = years ? `${years} year${years > 1 ? 's' : ''} ` : '';
-    let stringWeeks = weeks ? `${weeks} week${weeks > 1 ? 's' : ''}` : '';
-    let stringDays = days ? `${days} day${days > 1 ? 's' : ''}` : '';
-    let stringHours = hours ? `${hours} hour${hours > 1 ? 's' : ''}` : '';
-    let stringMinutes = minutes ? `${minutes} minute${minutes > 1 ? 's' : ''}`: '';
+    ageObj.stringYears = years ? `${years} year${years > 1 ? 's ' : ' '} ` : '';
+    ageObj.stringWeeks = weeks ? `${weeks} week${weeks > 1 ? 's ' : ' '}` : '';
+    ageObj.stringDays = days ? `${days} day${days > 1 ? 's ' : ' '}` : '';
+    ageObj.stringHours = hours ? `${hours} hour${hours > 1 ? 's ' : ' '}` : '';
+    ageObj.stringMinutes = minutes ? `${minutes} minute${minutes > 1 ? 's ' : ' '}`: '';
     
-    return `${stringYears} ${stringWeeks} ${stringDays} ${stringHours} ${stringMinutes ? "and " + stringMinutes : stringMinutes} old`
+    return ageObj;
+    // return `${stringYears} ${stringWeeks} ${stringDays} ${stringHours} ${stringMinutes ? "and " + stringMinutes : stringMinutes} old`
 }
 
-const calculateHeartBeats = () =>  (Math.floor(getCurrentAge() / MS_IN_HEARTBEAT));
-const calculateBreaths = () => (Math.floor(getCurrentAge() / MS_IN_BREATH));
+const calculateHeartBeats = () =>  (Math.floor(getCurrentAge() / MS_IN_HEARTBEAT)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");;
+const calculateBreaths = () => (Math.floor(getCurrentAge() / MS_IN_BREATH)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");;
 
 const Age = () => {
+    
     const [age, setAge] = useState(calculateAge());
     const [heartbeats, setHeartBeats] = useState(calculateHeartBeats());
     const [breaths, setBreaths] = useState(calculateBreaths());
@@ -60,7 +64,15 @@ const Age = () => {
     return(
         <AgeWrapper>
             <Intro>Oliver is</Intro>
-            <StyledAge>{age}</StyledAge>
+            <StyledAge>
+                {Object.keys(age).map((x,i) => {
+                    if(i === Object.keys(age).length - 1){
+                        return(<div>and {age[x]} old.</div>)
+                    }
+                return(<div style={{paddingRight: '10px'}}>{age[x]}</div>)
+                })}
+        
+            </StyledAge>
             <BreathWrapper>His heart has beaten {heartbeats} times and he has taken {breaths} breaths.</BreathWrapper>
         </AgeWrapper>
     )
@@ -71,11 +83,22 @@ const Intro = styled.p`
     font-family: ${fonts.primary};
     color: ${colors.button};
     margin-bottom: 1rem;
+    font-weight: 500;
+    width: 100%;
+    @media screen and (min-width: 850px){
+        text-align: center;
+    }
 `
 const StyledAge = styled.p`
     font-size: 1.5rem;
     font-family: ${fonts.primary};
     font-weight: 100;
+    display: flex;
+    width:100%;
+    @media screen and (max-width: 850px){
+        flex-direction:column;
+    }
+
 `
 const AgeWrapper = styled.div`
     display: flex;
