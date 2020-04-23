@@ -154,6 +154,41 @@ const IndexPage = () => {
         }
       }
     }
+    day9: file(relativePath: { eq: "day-9.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 1200) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+   day9a: file(relativePath: { eq: "day-9a.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 1200) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    day10: file(relativePath: { eq: "day-10.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 1200) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    day11: file(relativePath: { eq: "day-11.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 1200) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    day12: file(relativePath: { eq: "day-12.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 1200) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
     
   
   }
@@ -268,6 +303,27 @@ const IndexPage = () => {
     <Img fluid={data.day8.childImageSharp.fluid} />
     <Day number={8}>
       Oliver met Nana and Papa Larry for the first time. Cooked burgers with daddy.
+    </Day> 
+    <Img fluid={data.day9.childImageSharp.fluid} />
+    <Img fluid={data.day9a.childImageSharp.fluid} />
+
+    <Day number={9}>
+      Introduced you to emmaus fellowship.
+    </Day>
+    
+    <Img fluid={data.day10.childImageSharp.fluid} />
+    <Day number={10}>
+      First diaper rash. 😢 Met Alyssa.
+    </Day>
+
+    <Img fluid={data.day11.childImageSharp.fluid} />
+    <Day number={11}>
+      Oliver met Sarah, Molly, and Britney for the first time.
+    </Day>
+
+    <Img fluid={data.day12.childImageSharp.fluid} />
+    <Day number={12}>
+      Met Uncle Travis, and Aunt Kasey.
     </Day>
   </Layout>
 )
