@@ -18,10 +18,7 @@ const MS_IN_MIN = 60000
 const MS_IN_HR = MS_IN_MIN * 60
 const MS_IN_DAY = MS_IN_HR * 24
 const MS_IN_LEAPDAYS = MS_IN_DAY * leapdays
-console.log({ MS_IN_LEAPDAYS })
-console.log({ MS_IN_DAY })
-const MS_DAYS = 6.4
-const MS_IN_WEEK = MS_IN_DAY * MS_DAYS
+const MS_IN_WEEK = MS_IN_DAY * 7
 const MS_IN_MONTH = MS_IN_DAY * 30.4166666667
 const MS_IN_YEAR = MS_IN_MONTH * 12
 const MS_IN_HEARTBEAT = 500

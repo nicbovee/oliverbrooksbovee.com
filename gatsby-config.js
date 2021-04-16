@@ -17,14 +17,12 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      resolve: `gatsby-plugin-google-fonts`,
       options: {
         fonts: [
-          {
-            family: `IBM Plex Serif`,
-            variants: [`100` ,`300` ,`400`, `700`]
-          },
+          `IBM Plex Serif\:100,300,400,700`, // you can also specify font weights and styles
         ],
+        display: "swap",
       },
     },
     {
