@@ -84,11 +84,11 @@ const Age = () => {
     <AgeWrapper>
       <Intro>Oliver is</Intro>
       <StyledAge>
-        {Object.keys(age).map((x, i) => {
-          if (i === Object.keys(age).length - 1) {
-            return <div>and {age[x]} old.</div>
+        {Object.keys(age).filter(x => age[x] !== "").map((x, i) => {
+          if (i === Object.keys(age).filter(x => age[x] !== "").length - 1) {
+            return <div key={i} style={{ paddingBottom: "10px" }}>and {age[x]} old.</div>
           }
-          return <div style={{ paddingRight: "10px" }}>{age[x]}</div>
+          return <div key={i} style={{ paddingBottom: "10px" }}>{age[x]}</div>
         })}
       </StyledAge>
       <BreathWrapper>
@@ -106,15 +106,12 @@ const Intro = styled.p`
   margin-bottom: 1rem;
   font-weight: 500;
   width: 100%;
-  @media screen and (min-width: 850px) {
-    text-align: center;
-  }
+
 `
-const StyledAge = styled.p`
+const StyledAge = styled.div`
   font-size: 1.5rem;
   font-family: ${fonts.primary};
   font-weight: 100;
-  display: flex;
   width: 100%;
   @media screen and (max-width: 850px) {
     flex-direction: column;
