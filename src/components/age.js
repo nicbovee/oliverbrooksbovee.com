@@ -39,10 +39,10 @@ const calculateAge = () => {
 
   ageObj.stringYears = years ? `${years} year${years > 1 ? "s " : " "} ` : ""
   ageObj.stringMonths = months
-    ? `${months} year${months > 1 ? "s " : " "} `
+    ? `${months} month${months > 1 ? "s " : " "} `
     : ""
   ageObj.stringWeeks = weeks ? `${weeks} week${weeks > 1 ? "s " : " "}` : ""
-  ageObj.stringDays = days ? `${days} day${days > 1 ? "s " : " "}` : ""
+  ageObj.stringDays = days ? `${days} day${days > 1 ? "s " : " "}` : ""git
   ageObj.stringHours = hours ? `${hours} hour${hours > 1 ? "s " : " "}` : ""
   ageObj.stringMinutes = minutes
     ? `${minutes} minute${minutes > 1 ? "s " : " "}`
